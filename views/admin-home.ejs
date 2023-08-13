@@ -1,0 +1,37 @@
+<%- include('shared/header.ejs') -%>
+<%- include('shared/navigation.ejs') -%>
+
+
+<div class="container">
+    <h2>Admin Home Page</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Customer Id</th>
+            <th>Subtotal</th>
+            <th>Tax</th>
+            <th>Total Cost</th>
+            <th>Action</th>
+        </tr>
+      <!-- Use a forEach to display records -->
+        <% data.forEach(item => { %>
+        <tr>
+            <td><%= item.name %></td>
+            <td><%= item.email %></td>
+            <td><%= item.customerId %></td>
+            <td>$<%= item.amountBeforeTax %></td>
+            <td>$<%= (item.amountBeforeTax * 0.13).toFixed(3) %></td> <!-- Calculate tax here -->
+            <td>$<%= item.amountAfterTax %></td>
+        <!-- Add a link to view a single records will match our route that we define in index.js -->
+            <td class="buttons-action">
+                <a class="button-view" href="<%= `/details/${item.id}` %>">View</a>
+                <a class="button-delete" href="<%= `/delete/${item.id}` %>">Delete</a>
+            </td>
+        </tr>
+        <% }); %>
+    </table>
+</div>
+
+
+<%- include('shared/footer.ejs') -%>

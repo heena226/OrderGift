@@ -1,0 +1,15 @@
+<%- include('shared/header.ejs') -%>
+<%- include('shared/navigation.ejs') -%>
+
+  <div class="container">
+
+    <section>
+      <h1>Thank you for submitting the new request <q><i><b><%= name %></b></i></q></h1>
+      <p>Check your email - <b><%= email %></b> for updates</p>
+      <h2>Info:</h2>
+      <p>Priority of the request: <%= priority %></p>
+      <p>Status of the request: <%= status %></p>
+    </section>
+
+</div>
+<%- include('shared/footer.ejs') -%>

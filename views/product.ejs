@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benefits Gifts</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>   
+</head>
+<body>
+    <style>
+      body {
+    background-color: #efefef;
+    font-family: cursive;
+    margin: 0px;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.text-center {
+  text-align: center;
+}
+.margin-left-20 {
+  margin-left: 20px;
+}
+.margin-right-20 {
+  margin-right: 20px;
+}
+.margin-bottom-10 {
+  margin-bottom: 10px;
+}
+.container .submit button {
+  width: 200px;
+  background: #97004c;
+  font-family: cursive;
+  color: #fff;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+.container .submit button:hover {
+  background-color: white;
+  border: 2px solid #97004c;
+  color: #97004c;
+  transition: 0.3s;
+}
+
+header.header {
+  padding: 10px 30px 12px;
+  border-bottom: 1px solid #333;
+}
+header .logo {
+  color: #e60979;
+    font-size: 40px;
+    font-weight: 600;
+    font-family: cursive;
+    text-shadow: 2px 4px 5px #222;
+}
+header .logo, header .tag-line {
+  display: inline-block;
+}
+header .tag-line {
+  font-size: 24px;
+}
+.navigation-header {
+  text-align: center;
+}
+.navigation-header ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+.navigation-header ul li {
+  margin-right: 20px;
+  display: inline-block;
+}
+.navigation-header a {
+  text-decoration: none;
+  font-size: 20px;
+  color: #e60979;
+}
+.navigation-header a:hover {
+  color: #97004c;
+  text-decoration: underline;
+  transition: 0.3s;
+}
+
+/* MAIN STARTS */
+.container {
+  margin: 0px 30px 120px;
+}
+.container form {
+  width: 50%;
+}
+.container form label {
+  font-size: 18px;
+  display: block;
+  font-weight: 600;
+}
+.container form input, select {
+  width: calc(90% - 150px);
+  height: 30px;
+  font-size: 16px;
+  padding: 0px 10px;
+}
+.container form .wrapper {
+  margin-bottom: 10px;
+}
+.container .image-box img {
+  max-width: 100% !important;
+}
+.container .image-box img {
+  max-width: 100% !important;
+  max-height: 400px;
+}
+.btn-delete, .btn-edit {
+  width: 150px;
+  float: left;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  margin-right: 10px;
+}
+.btn-delete a, .btn-edit a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* FOOTER STYLES STARTS */
+footer.footer {  
+  margin-top: 50px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+footer .footer-box {
+  text-align: center;
+  background-color: #97004c;
+  color: #efefef;
+  font-size: 20px;
+  padding: 15px;
+}
+footer .footer-box p {
+  margin: 0px;
+}
+
+.container .capital-text {
+  text-transform: capitalize;
+}
+.container .button-delete {
+  width: 200px;
+  background: #97004c;
+  color: #fff;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  border: 2px solid transparent;
+  text-align: center;
+}
+.container .button-delete a {
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+.container .button-delete:hover {
+  background-color: white;
+  border: 2px solid #97004c;
+  color: #97004c;
+  transition: 0.3s;
+}
+.container .button-delete:hover a {
+  color: #97004c;
+}
+    </style>
+    <header class="header">
+        <div class="logo">
+          Benefits Gifts
+        </div>
+    </header>
+    
+    <%- include('shared/navigation.ejs') -%>
+
+<div class="container">
+    
+<!-- Checking if product is defined before rending -->
+<% if (product) { %>
+  <h1><em class="capital-text"><%= product.name %>'s</em> order Information</h1>
+
+  <p><b>Name:</b> <%= product.name %></p>
+  <p><b>Email:</b> <%= product.email %></p>
+  <% if (product.product1) { 
+    %>
+    <p><b>Headphones:</b> <%= product.product1 %></p>
+  <% } %>
+  <% if (product.product2) { 
+    %>
+    <p><b>Deodrant:</b> <%= product.product2 %></p>
+  <% } %>
+  <% if (product.product3) { 
+    %>
+    <p><b>Jacket:</b> <%= product.product3 %></p>
+  <% } %>
+  <p><b>Amount Before Tax: </b>$<%= product.amountBeforeTax %></p>
+  <p><b>Total tax calculated: </b>$<%= (product.amountBeforeTax * 0.13).toFixed(3) %></p> <!-- Calculate tax here -->
+  <p><b>Total amount with Tax: </b>$<%= product.amountAfterTax %></p>
+  <!-- Pass product id to endpoint -->
+  <div class="button-delete">
+    <a href="<%= `/delete/${product.id}` %>">Delete</a>
+  </div>
+  <% } else { %>
+  <p>Order information not available.</p>
+<% } %>
+</div>
+
+<%- include('shared/footer.ejs') -%>

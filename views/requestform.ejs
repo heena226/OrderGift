@@ -1,0 +1,85 @@
+<%- include('shared/header.ejs') -%>
+    
+<%- include('shared/navigation.ejs') -%>
+
+<div class="container">
+    <h2>Create new request</h2>
+
+    <form class="my-form" name="myForm" method="post" action="/contact-form" enctype="multipart/form-data">
+      <div class="box-left">
+        <div class="wrapper">
+          <label for="name"> Name:</label>
+          <input type="text" id="name" name="name">
+        </div>
+        <div class="wrapper">
+          <label for="email"> Email:</label>
+          <input type="text" id="email" name="email" >
+        </div>
+        <div class="wrapper">
+            <label for="customerId"> Customer Id:</label>
+            <input type="text" id="customerId" name="customerId" >
+        </div>
+        
+      <div class="submit-button1">
+        <div class="submit">
+            <button type="submit">Submit</button>
+        </div>
+    </div>
+      </div>
+      <div class="box-right">
+        <div class="wrapper">
+          <label for="product"> Headphones ($6.5 each):</label>
+          <select name="product1" id="">
+              <option value="" disabled selected>Select the quantity you need</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+          </select>
+        </div>
+        <div class="wrapper">
+          <label for="product"> Deodrant ($14.5 each):</label>
+          <select name="product2" id="">
+              <option value="" disabled selected>Select the quantity you need</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+          </select>
+        </div>
+        <div class="wrapper">
+          <label for="product"> Jacket ($31.99 each):</label>
+          <select name="product3" id="">
+              <option value="" disabled selected>Select the quantity you need</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+          </select>
+        </div>
+        
+      </div>
+      </form>
+
+      <% if(typeof errors !== 'undefined') {
+        for(let error of errors) {
+          %>
+            <p><%= error.msg %> <p/>
+          <%
+        }
+      } %>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.6/tinymce.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.6/jquery.tinymce.min.js"></script>
+
+    <script>
+      tinymce.init({
+          selector: '#description',
+          height: 300,
+          width: 500,
+          menubar: false
+      });
+    </script>
+
+
+<%- include('shared/footer.ejs') -%>

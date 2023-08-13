@@ -1,0 +1,32 @@
+<%- include('shared/header.ejs') -%>
+<%- include('shared/navigation.ejs') -%>
+
+
+<div class="container">
+    <h2>Home Page</h2>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+      <!-- Use a forEach to display records -->
+        <% data.forEach(item => { %>
+        <tr>
+            <td><%= item.id %></td>
+            <td><%= item.name %></td>
+            <td><%= item.email %></td>
+            <td><%= item.priority %></td>
+            <td><%= item.status %></td>
+        <!-- Add a link to view a single records will match our route that we define in index.js -->
+            <td><a href="<%= `/details/${item.id}` %>">View</a></td>
+        </tr>
+        <% }); %>
+    </table>
+</div>
+
+
+<%- include('shared/footer.ejs') -%>

@@ -1,0 +1,33 @@
+<%- include('shared/header.ejs') -%>
+<%- include('shared/navigation.ejs') -%>
+
+  <div class="container">
+<!-- Make sure that the receipt is generated only if the customer has bought at least one item. -->
+<% if(custName == "customerName") { %>   
+    <section>
+        <h2><em class="capital-text">Hi,</em> you need to select one of the item to make a purchase!</h2>
+        <h3>Goto <q><i><u> Order gift</u></i></q> from the menu and start gifting now!</h3>
+    </section>
+<% } else { %>
+    <section>
+        <h1>Thank you for submitting the new request for the gift Order <q><i><b><%= name %></b></i></q></h1>
+        <p>Check your email - <b><%= email %></b> for updates</p>
+        <h2>Info: <%= name %> selected the following in this Order</h2>
+        <% if(product1) { %>
+            <p><b>Headphones - </b><%= product1 %> units</p>
+        <% } %>
+        <% if(product2) { %>
+            <p><b>Deodrant - </b><%= product2 %> units</p>
+        <% } %>
+        <% if(product3) { %>
+            <p><b>Jacket - </b><%= product3 %> units</p>
+        <% } %>
+        <p><b>Total amount (before tax) - </b>$<%= amountBeforeTax %></p>
+        <p><b>Tax amount calculated - </b>$<%= (amountBeforeTax * 0.13).toFixed(3) %></p>
+        <p><b>Net amount (including tax) - </b>$<%= amountAfterTax %></p>
+    </section>
+<% } %>
+
+
+</div>
+<%- include('shared/footer.ejs') -%>

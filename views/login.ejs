@@ -1,0 +1,35 @@
+<%- include('shared/header.ejs') -%>
+<%- include('shared/navigation.ejs') -%>
+
+<style>
+	.login-form label {
+		width: 40% !important;
+	}
+	.login-form input, .login-form select {
+		width: 40% !important;
+	}
+</style>
+<div class="container">
+    <h3>Please login for the admin to have a look on the dashboard</h3>
+
+    <form class="login-form" action="loginForm" method="POST">
+		<div class="margin-bottom-10">
+			<label for="username">Username: </label>
+			<input type="text" id="username" name="username" />
+		</div>
+		<div class="margin-bottom-10">
+			<label for="password">Password: </label>
+			<input type="password" id="password" name="password" />
+		</div>
+		<div class="submit">
+			<button type="submit">Submit</button>
+		</div>
+	</form>
+
+    <% if(typeof(error) != 'undefined'){ %> 
+        <%= error %> 
+      <%  } %>
+      
+</div>
+
+<%- include ('shared/footer.ejs') -%>
